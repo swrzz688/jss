@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.fangkuai{
+		width:300px;
+		height: 300px;
+		background-color: black;
+	}
+	.red{
+		background-color: red;
+		width:300px;
+		height: 300px;
+	}
+	</style>
+</head>
+<body>
+	<div class="fangkuai"></div>
+	<script>
+		var shijian=document.getElementsByClassName("fangkuai")[0];
+		shijian.onclick=function(){
+			if(shijian.className=="fangkuai"){
+				shijian.className="red"
+			}
+				else{
+					shijian.className="fangkuai"
+				}
+
+		}
+	</script>
+</body>
+</html>

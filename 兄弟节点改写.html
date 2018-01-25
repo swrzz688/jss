@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兄弟节点改写</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>大兄弟</li>
+			<li id="xd">二兄弟</li>
+			<li>三兄弟</li>
+			<li>四兄弟</li>
+			<li>五兄弟</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	 var xingdi=document.getElementById("xd")
+	 // 调用函数
+	 function next(obj){
+	 	while(obj.nextSibling.nodeType !=1){
+	 		// obj兄弟节点返回值如果不等于1
+	 		obj=obj.nextSibling
+	 		// 指向每个兄弟节点
+	 		if(obj.nextSibling.nodeType ==1 ||obj.nextSibling.nodeType ==9)
+	 		// obj兄弟节点返回值如果等于1或9
+	 			return obj.nextSibling;
+	 			// 返回这个兄弟节点
+	 	}
+	 }
+	 console.log(next(xingdi))
+	</script>
+</body>
+</html>

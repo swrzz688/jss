@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>目标下所有兄弟节点</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>孙文锐</li>
+		<li>马涛</li>
+		<li class="mb">郭博</li>
+		<!-- haha -->
+		<!-- haha -->
+		<li>刘林涛</li>
+		<li>袁鹏</li>
+		<li>秦明杰</li>
+		<li>黄祥</li>
+	</ul>
+	<script type="text/javascript">
+	var mb=document.getElementsByClassName("mb")[0]
+	// 找到页面所有class名为mb的节点
+	console.log(mb)
+	var js=[]
+	// 声明一个空数组
+	function gx(obj){
+		var fj=obj.parentNode.childNodes
+		// 枚举出这个节点的父级元素节点的所有子集节点
+		// console.log(fj)
+		for(n=0;n<fj.length;n++){
+			if(fj[n].className=="mb"){
+				// 当这个节点className为mb时
+				for(var a=n+1;a<fj.length;a++){
+					if(fj[a].nodeType==1||fj[a].nodeType==9){
+						// 等于mb时且他的nodeType为1时或为9时
+						js.push(fj[a])
+						// 插入到js数组
+					}
+				}
+			}
+		}
+		return js
+		// 跳出循环到js
+	}
+	console.log(gx(mb))
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<p>一</p>
+		<p>二</p>
+		<p id="cr">三</p>
+		<p>四</p>
+	</div>
+	<script type="text/javascript">
+		var newdiv=document.createElement("div")
+		var we=document.getElementById("cr")
+		newdiv.innerHTML="我是三前面的"
+		we.parentNode.insertBefore(newdiv,we)
+	</script>
+</body>
+</html>

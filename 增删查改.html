@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>内容1</li>
+		<li id="shanchu">我要走了</li>
+		<li>内容3</li>
+		<li>内容4</li>
+		<li>内容5</li>
+	</ul>
+	<script type="text/javascript">
+	var shanchu=document.getElementById("shanchu")
+	var ul=document.getElementsByTagName("ul")[0] 
+	ul.removeChild(shanchu)
+	</script>
+</body>
+</html>

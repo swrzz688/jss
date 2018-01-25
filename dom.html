@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="d1" id="boot1">我是标签</div>
+	<div class="d2" id="boot2">我是标签</div>
+	<div class="d3" id="boot3">我是标签</div>
+	<script type="text/javascript">
+	var obj = document.getElementsByTagName("div");
+	for(var a=0;a<obj.length;a++){
+		obj[a].innerHTML="S"
+	console.log(obj[a])                                                          
+	}
+	</script>
+</body>
+</html>

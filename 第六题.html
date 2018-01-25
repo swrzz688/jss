@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实现一个方法:该方法期望接受2个参数arg1:Node节点arg2:字符串该函数返回arg1的所有class值为arg2的同级元素 返回结果为数组.</title>
+</head>
+<body>
+	<ul id="ul">
+		<li class="daniu">孙文锐</li>
+		<li>马涛</li>
+		<li id="mb">郭博</li>
+		<!-- haha -->
+		<!-- haha -->
+		<li class="daniu">刘林涛</li>
+		<li class="daniu">袁鹏</li>
+		<li>秦明杰</li>
+		<li class="daniu">黄祥</li>
+	</ul>
+	<script type="text/javascript">
+		var mb=document.getElementById("mb")
+		var sr=[]
+		function fd(obj,we){
+			var da=obj.parentNode.childNodes
+			for(var i=0;i<da.length;i++){
+				if(da[i].className==we){
+					sr.push(da[i])
+				}
+			}
+			return sr
+		}
+		console.log(fd(mb,"daniu"))
+	</script>
+</body>
+</html>

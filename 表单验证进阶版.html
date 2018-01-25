@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+	p span{
+		color: red;
+		display: none;
+	}
+	.xian{
+		display: inline;
+	}
+</style>
+</head>
+<body>
+	<h3>注册</h3>
+	<p>
+	邮箱：<input class="xingxi" type="text" placeholder="请输入邮箱">
+	<span>请输入邮箱</span>
+	</p>
+	<p>
+	密码：<input class="xingxi" type="password" placeholder="请输入密码">
+	<span>请输入密码</span>
+	</p>
+	<p>
+	官方微博名：<input class="xingxi" type="text" placeholder="请输入微博名">
+	<span>请输入微博名</span>
+	</p>
+	<button id="anliu">立即注册</button>
+	<script type="text/javascript">
+	var xingxi=document.getElementsByClassName("xingxi")
+	var button=document.getElementById("anliu")
+	button.onclick=function(){
+		for(var a=0;a<xingxi.length;a++){
+			if(xingxi[a].value==""){
+				xingxi[a].parentNode.getElementsByTagName("span")[0].className="xian"
+			}
+			else{
+                xingxi[a].parentNode.getElementsByTagName("span")[0].className=""
+			}
+		}
+	}
+	</script>
+	
+</body>
+</html>

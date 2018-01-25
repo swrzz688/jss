@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	p span{
+		color: red;
+		display: none;
+	}
+	.xian{
+		display: inline;
+	}
+	</style>
+</head>
+<body>
+	<h3>注册</h3>
+	<p>
+	邮箱：<input id="youxiang"type="text" placeholder="请输入邮箱">
+	<span id="cyouxiang">请输入邮箱</span>
+	</p>
+	<p>
+	密码：<input id="mima"type="password" placeholder="请输入密码">
+	<span id="cmima">请输入密码</span>
+	</p>
+	<p>
+	官方微博名：<input id="weibo"type="text" placeholder="请输入微博名">
+	<span id="cweibo">请输入微博名</span>
+	</p>
+	<button id="anliu">立即注册</button>
+	<script type="text/javascript">
+	var anliu=document.getElementById("anliu")
+	var youxiang=document.getElementById("youxiang")
+	var mima=document.getElementById("mima")
+	var weibo=document.getElementById("weibo")
+	var cyouxiang=document.getElementById("cyouxiang")
+	var cmima=document.getElementById("cmima")
+	var cweibo=document.getElementById("cweibo")
+	anliu.onclick=function(){
+		if(youxiang.value && mima.value && weibo.value){
+		alert("注册成功")
+			cyouxiang.className=""
+			cmima.className=""
+			cweibo.className=""
+		}
+		else{
+			if(youxiang.value==""){
+				cyouxiang.className="xian"
+			}
+			if(mima.value==""){
+				cmima.className="xian"
+			}
+			if(weibo.value==""){
+				cweibo.className="xian"
+			}
+		}
+	}
+	</script>
+</body>
+</html>

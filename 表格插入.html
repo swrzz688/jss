@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.kelong{
+		display: none;
+	}
+	thead tr{
+		border: 1px solid #333;
+	}
+	</style>
+</head>
+<body>
+	<h2>学生管理信息</h2>
+	<hr/>
+	<p>
+	姓名：<input id="ming"type="text">
+	年龄：<input id="nian"type="text">
+			<select id="xinbie">
+				<option value="男">男</option>
+				<option value="女">女</option>
+			</select>
+	<button id="charu">插入数据</button>
+	</p>
+	<table border="1">
+		<thead>
+				<th class="num">学号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+		</thead>
+		<tbody id="tbody">
+			<tr class="kelong">
+				<th class="num"></th>
+				<th class="xim"></th>
+				<th class="nianl"></th>
+				<th class="xinbie"></th>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>	
+	<script type="text/javascript">
+		var charu=document.getElementById("charu")
+		var kelong=document.getElementsByClassName("kelong")[0]
+		var tbody=document.getElementById("tbody")
+		var ming=document.getElementById("ming")
+		var nian=document.getElementById("nian")
+		var xinbie=document.getElementById("xinbie")
+		var num=document.getElementById("num")
+		var n=1
+		charu.onclick=function(){
+			var	newb=kelong.cloneNode(true)
+			newb.className=""
+			if(ming.value!=0&&nian.value!=0){
+
+			tbody.appendChild(newb)
+			newb.getElementsByClassName("xim")[0].innerHTML=ming.value;
+			newb.getElementsByClassName("nianl")[0].innerHTML=nian.value;
+			newb.getElementsByClassName("xinbie")[0].innerHTML = xinbie.value;
+			newb.getElementsByClassName("num")[0].innerHTML = n++;
+			ming.value = "";
+        	nian.value = "";
+			}
+		}
+	</script>
+</body>
+</html>

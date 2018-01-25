@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="shengshi.js"></script>
+
+	<script>
+		for(var a=0;a<data.length;a++){
+			document.write("<h2>"+data[a].name+"</h2>")
+		
+			for(var n=0;n<(data[a].city).length;n++){
+				document.write("<h4>"+(data[a].city)[n].name+"</h4>")
+				if((data[a].city)[n].length-1){
+
+				}
+					document.write(",")
+			}
+			document.write("<hr/>")
+		}
+		console.log(data)
+	</script>
+	<style type="text/css">
+		h4{
+			display:inline-block;
+			color: #0f0;
+		}
+		h2{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

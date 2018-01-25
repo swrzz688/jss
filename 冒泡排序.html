@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var a=[5,3,9,12,6,1]
+			var b=0
+			while(b<(a.length-1)){
+				var n=0
+				while(n<(a.length -1 -b)){
+					if(a[n]>a[n+1]){
+						var m=a[n]
+						a[n]=a[n+1]
+						a[n+1]=m
+					}
+					n++
+				}
+				b++
+			}
+				console.log(a)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子元素节点</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<ul id="qirenzhong">
+		<li>孙文锐</li>
+		<li>马涛</li>
+		<li>刘林涛</li>
+		<li>秦明杰</li>
+		<li>袁鹏</li>
+		<li>郭博</li>
+		<li>黄祥</li>
+	</ul>
+	<script type="text/javascript">
+	var qrz=document.getElementById("qirenzhong")
+	function qxd(obj){
+		var qirz=[]
+		var hqrz=qrz.childNodes;
+		for(var n=0;n<hqrz.length;n++){
+			if(hqrz[n].nodeType==1){
+				qirz.push(hqrz[n]);
+			}
+		}
+		return qirz;
+	}
+	console.log(qxd(qrz))
+	</script>
+</body>
+</html>
