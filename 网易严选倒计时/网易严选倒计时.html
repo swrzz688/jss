@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网易严选倒计时</title>
+	<style>
+	*{margin: 0;padding: 0;}
+		.tu{
+			background-image: url(images/tu.jpg);
+			background-repeat: no-repeat;
+			width: 224px;
+			height: 337px;
+			margin: 0 auto;
+
+		}
+		.tu a{
+			padding-top: 50px;
+			text-align: center;
+			display: block;
+			text-decoration: none;
+			width: 224px;
+    		height: 337px;
+		}
+		.niu{
+			width:100px;
+			height: 30px;
+			background-color: #a7936e;
+			border-radius: 20px;
+			line-height: 30px;
+			margin-left: 65px;
+			color: #fff;
+		}
+		.jieshu{
+			font-size: 20px;
+			font-weight:normal;
+			color: #615548;
+		}
+		.daojishi{
+			height: 40px;
+			line-height: 40px;
+			margin-top: 10px;
+
+		}
+		.shijian{
+			width: 40px;
+			height: 40px;
+			background-color: #615548;
+			display: inline-block;
+			line-height: 40px;
+			margin-top: 15px;
+			margin-bottom: 35px;
+			border-radius: 5px;
+			color: #fff;
+		}
+		.xian{
+			width: 25px;
+			height: 2px;
+			background-color: #615548;
+			margin-left: 100px;
+			margin-top: 10px;
+			margin-bottom: 15px;
+		}
+		.chang{
+			font-size: 30px;
+			color: #615548;
+		}
+	</style>
+</head>
+<body>
+	<div class="tu">
+		<a href="">
+			<p class="chang">22点场</p>
+			<p class="xian"></p>
+			<p class="jieshu">距离结束还剩</p>
+			<div id="daojishi">
+				<span class="shijian" id="h">1</span>
+				<span>:</span>
+				<span class="shijian" id="f">2</span>
+				<span>:</span>
+				<span class="shijian" id="m">3</span>
+			</div>
+			<p class="niu">查看全部></p>
+		</a>
+	</div>
+	<script>
+		var daojishi=document.getElementById("daojishi")
+		var xiaoshi=document.getElementById("h")
+		var fenzhong=document.getElementById("f")
+		var mi=document.getElementById("m")
+		var shijian
+	function djs(){
+		var jinshi = new Date();
+		var weishi = new Date();
+		var nian=weishi.setFullYear(2018)
+		var ri=weishi.setDate(30)
+		var yue=weishi.setMonth(0)
+		var shi=weishi.setHours(22)
+		var fen=weishi.setMinutes(0)
+		var miao=weishi.setSeconds(0)
+		var m=(weishi.getTime()-jinshi.getTime())/1000
+		var t=Math.floor(m/86400)
+		var h=Math.floor(m/3600 - t*24)
+		var f=Math.floor(m/60-t*24*60-h*60)
+		var s=Math.floor(m-t*24*3600-h*3600-f*60)
+		for(var a=0;a<10;a++){
+			if(t==a){
+				t="0"+t
+			}
+			if(h==a){
+				h="0"+h
+			}
+			if(f==a){
+				f="0"+f
+			}
+			if(s==a){
+				s="0"+ s
+			}
+		}
+		xiaoshi.innerHTML= h
+		fenzhong.innerHTML= f
+		mi.innerHTML= s 
+	}
+	setInterval(function(){
+		djs()
+	},1000)
+		djs()
+	</script>
+</body>
+</html>

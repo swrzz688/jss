@@ -61,6 +61,7 @@
   }
   #dian .yanse{
     background-color: #de4412;
+    color: #fff;
   }
 	</style>
 </head>
@@ -77,12 +78,12 @@
 		<img id="jzuo"src="images/l.png">
 		<img id="jyou"src="images/r.png">
 		<div id="dian">
-	       	<span class="yanse">0</span>
-	      	<span>1</span>
-	       	<span>2</span>
-		   	  <span>3</span>
+	       	<span class="yanse">1</span>
+	      	<span>2</span>
+	       	<span>3</span>
 		   	  <span>4</span>
 		   	  <span>5</span>
+		   	  <span>6</span>
    		</div>
 	</div>  
 	<script>
@@ -123,7 +124,7 @@
     for(var n=0;n<dian.length;n++){
       dian[n].className = ""
     }
-    dian[t].className = "yanse"
+      dian[t].className = "yanse"
   }
   function newyouj(){
     t++
@@ -156,63 +157,66 @@
     }
   }
   jyou.onclick=function(){
-   newyouj()
+    newyouj()
   }
-   jzuo.onclick = function(){
-         t--;
-         if(t !== -1){
-          dianList()
-           var you = setInterval(function(){
-             var zuoju = parseInt(ul.style.left);
-              var width=-( t * 1000 );
-             if(zuoju !== width){
-               ul.style.left = zuoju +Math.ceil((width-zuoju)/10) + "px"
-             }
-             else{
-               clearInterval(you)
-             }
-           },20)
-         }
-         else{
-           t = li.length - 1;
-           dianList()
-           var you= setInterval(function(){
-             var zuoju = parseInt(ul.style.left);
-              var width=-( t * 1000 );
-             if(zuoju !==width){
-               ul.style.left = zuoju+ Math.floor(((width-zuoju)/10) * (li.length - 1)) + "px"
-             }
-             else{
-               clearInterval(you)
-             }
-           },20)
-         }
-       }
-
-      for(var n=0;n<dian.length;n++){
-            dian[n].onclick=function(){
-          for(var i = 0;i<li.length;i++){
-            dian[i].className = "";
+  function newzuoj(){
+      t--;
+      if(t !== -1){
+        dianList()
+        var you = setInterval(function(){
+            var zuoju = parseInt(ul.style.left);
+            var width=-( t * 1000 );
+          if(zuoju !== width){
+            ul.style.left = zuoju +Math.ceil((width-zuoju)/10) + "px"
           }
-              t = Number(this.innerHTML)
-              dian[t].className = "yanse"
-              // ul.style.left= -(t*1000)+"px"
-              newyouj()
-         }
+          else{
+              clearInterval(you)
+          }
+        },20)
       }
+      else{
+        t = li.length - 1;
+        dianList()
+        var you= setInterval(function(){
+          var zuoju = parseInt(ul.style.left);
+            var width=-( t * 1000 );
+            if(zuoju !==width){
+              ul.style.left = zuoju+ Math.floor(((width-zuoju)/10) * (li.length - 1)) + "px"
+            }
+            else{
+               clearInterval(you)
+            }
+          },20)
+       }
+  }
+  jzuo.onclick=function(){
+      newzuoj()
+  }
+
+  for(var n=0;n<dian.length;n++){
+    dian[n].onmouseover=function(){
+      for(var i = 0;i<li.length;i++){
+        dian[i].className = "";
+      }
+        t = Number(this.innerHTML)-1
+        dian[t].className = "yanse"
+          newyouj()
+          newzuoj()
+    }
+  }
 
 
-        var autoplay = setInterval(function(){
-              newyouj();
-        },6000)
-        banner.onmouseenter = function(){
-          clearInterval(autoplay);
-        }
-        banner.onmouseleave = function(){
-          var autoplay = setInterval(function(){
-            newyouj();
-          },6000)
-        }
+  var autoplay = setInterval(function(){
+      newyouj();
+  },3000)
+  banner.onmouseenter = function(){
+      clearInterval(autoplay);
+  }
+  banner.onmouseleave = function(){
+    autoplay = setInterval(function(){
+      newyouj();
+    },3000)
+  }
 	</script>
 </body>
 </html>

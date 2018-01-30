@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>敏感词检测</title>
+	<style>
+		.yance{
+			color: red;
+		}
+		.tongguo{
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<p><textarea id="leirong"></textarea></p>
+	<button id="btn">开始检测</button>
+	<p><span id="tishi"></span></p>
+	<p id="xiangqing"> </p>
+	<script src="jinzhi.js"></script>
+	<script>
+	var btn=document.getElementById("btn")
+	var leirong=document.getElementById("leirong")
+	var tishi=document.getElementById("tishi")
+	var xiangqing=document.getElementById("xiangqing")
+	btn.onclick=function(){
+		var zhinen=leirong.value
+		// 获取文本域的文字
+		xiangqing.innerHTML=zhinen;
+		// 将文本域内容赋予给xiangqing
+		var panduan=false
+		// 先设置进入页面没有敏感词
+		for(var n=0;n<minganci.length;n++){
+			// 枚举敏感词
+			if(zhinen.indexOf(minganci[n])!==-1){
+				panduan=true
+				// tishi.innerHTML="检测到敏感词汇"
+				// tishi.className="yance"
+
+				xiangqing.innerHTML=xiangqing.innerHTML.replace(minganci[n],"<span class='yance'>" + minganci[n] + "</span>")
+			}
+
+			// else{
+			// 	tishi.innerHTML="通过!"
+			// 	tishi.className="tongguo"
+			// }
+		}
+		if(panduan){
+			tishi.innerHTML="检测到敏感词汇"
+			tishi.className="yance"
+		}
+		else{
+			tishi.innerHTML="通过!"
+			tishi.className="tongguo"
+		}
+	}
+	</script>
+</body>
+</html>
