@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边栏</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	.anniu{
+		padding-left: 300px;
+	}
+	#cebian{
+		width: 300px;
+		height: 100%;
+        width:300px;
+        background-color:#777;
+        font-size:24px;
+        text-align:center;
+        color:#fff;
+        position:absolute;
+        top:0;
+	}
+	#you{
+        opacity: 0;
+        background-color:#000;
+        height:100%;
+        width:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:-1;
+    }
+	</style>
+</head>
+<body>
+	<span class="anniu">
+		<button type="button" id="chuce">显示侧边栏</button>
+	</span>
+	<div id="cebian" style="left:-300px;">侧边栏</div>
+    <div id="you"></div>
+    <script>
+		var chuce=document.getElementById("chuce")
+    	var cebian=document.getElementById("cebian")
+    	chuce.onclick=function(){
+    		you.style.opacity="0.3"
+    		var w = setInterval(function(){
+        	var p = parseInt(cebian.style.left);
+        		if(p<0){
+          			cebian.style.left = p + 15 + "px"
+        		}
+        		else{
+          			clearInterval(w)
+       			}
+      		},15)
+    	}
+    	cebian.onclick=function(){
+    		you.style.opacity="0"
+    		var w1 = setInterval(function(){
+        	var p = parseInt(cebian.style.left);
+        		if(p>-300){
+          			cebian.style.left = p-15 + "px"
+        		}
+        		else{
+          			clearInterval(w1)
+       			}
+      		},15)
+    	}
+    
+    </script>
+</body>
+</html>

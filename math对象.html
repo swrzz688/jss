@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	  var pijun = {
+        a0:0,
+        a1:0,
+        a2:0,
+        a3:0,
+        a4:0,
+        a5:0,
+        a6:0,
+        a7:0,
+        a8:0,
+        a9:0,
+        a10:0,
+      }
+      for(var i = 0; i < 100000; i++){
+        var num = Math.floor(Math.random() * 11);
+        pijun["a"+num]++;
+      }
+      console.log(pijun)
+	</script>
+</body>
+</html>

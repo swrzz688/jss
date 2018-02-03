@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机颜色</title>
+	<style>
+	*{margin:0;padding:0;}
+    li{
+    	list-style:none;
+    }
+    #jihe li{
+        float:left;
+        width:20%;
+        height:10px;
+    }
+	</style>
+</head>
+<body>
+	<ul id="jihe">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+	function color(){
+		var sjcolor=[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"]
+		var pinjun="#"
+		for(n=0;n<6;n++){
+			var sj = Math.floor(Math.random() * 16);
+				 pinjun += sjcolor[sj]
+		}
+		return pinjun
+	}
+	 var li= document.getElementById("jihe").getElementsByTagName("li");
+      for(var i = 0; i < li.length;i++){
+        li[i].style.backgroundColor = color()
+      }
+	</script>
+</body>
+</html>

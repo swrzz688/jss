@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计时器</title>
+	<script>
+	// 	setTimeout(function(){
+	// 		alert(1)
+	// 	},3000)
+	// 	setInterval(function(){
+	// 		console.log(1)
+	// 	},3000)
+	// </script>
+	<style>
+	#fk{
+		height: 300px;
+		width: 300px;
+		background-color: red;
+		text-align: center;
+		line-height: 300px;
+		font-size: 30px;
+	}
+	</style>
+</head>
+<body>
+	<div id="fk">
+		我是大神
+	</div>
+	<script>
+	var fk=document.getElementById("fk")
+	var ml=0
+	fk.onclick=function(){
+		setInterval(function(){
+			if(ml<1250){
+				fk.style.marginLeft=ml + 5 + "px"
+				ml=ml+5
+			}
+		},30)
+	}
+	</script>
+</body>
+</html>

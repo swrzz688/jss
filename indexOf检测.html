@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测</title>
+	<style>
+		.yance{
+			color: red;
+		}
+		.tongguo{
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<p><textarea id="leirong"></textarea></p>
+	<button id="btn">开始检测</button>
+	<p><span id="tishi"></span></p>
+	<script>
+		var btn=document.getElementById("btn")
+		var leirong=document.getElementById("leirong")
+		var tishi=document.getElementById("tishi")
+		btn.onclick=function(){
+			var zhinen=leirong.value
+			if(zhinen.indexOf("天安门")!=-1){
+				tishi.innerHTML="检测敏感词汇，在文字的第"+zhinen.indexOf("天安门")+"位有敏感词！"
+				tishi.className="yance"
+			}
+			else{
+				tishi.innerHTML="通过!"
+				tishi.className="tongguo"
+			}
+		}
+			// for(var n=0;n<zhinen.length;n++){
+			// 	if(zhinen[n].indexOf("天") && zhinen[n+1].indexOf("安") && zhinen[n+2].indexOf("门")){
+			// 		tishi.innerHTML="通过!"
+			// 		tishi.className="tongguo"
+			// 	}
+			// 	else{
+			// 		tishi.innerHTML="检测敏感词汇，在文字的第"+zhinen.indexOf("天安门")+"位有敏感词！"
+			// 			tishi.className="yance"
+			// 	}
+			// }
+	</script>
+</body>
+</html>

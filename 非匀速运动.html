@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>非匀速运动</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	#sekuai{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="sekuai" style="margin-left:0;"></div>
+	<script>
+		var sekuai=document.getElementById("sekuai")
+		sekuai.onclick=function(){
+			var width=1000;
+			setInterval(function(){
+				var zuoju= parseInt(sekuai.style.marginLeft);
+				if(zuoju<width){
+					sekuai.style.marginLeft=zuoju+Math.ceil((width-zuoju)/20)+"px"
+				}	
+			},30)
+		}
+
+	</script>
+</body>
+</html>

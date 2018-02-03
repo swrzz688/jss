@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date日起对象</title>
+	<style>
+	#time{
+		border: 1px solid black;
+		width:400px;
+	}
+	</style>
+</head>
+<body>
+	<div id="time"></div>
+	<script>
+	var time=document.getElementById("time")
+	function gengxi(){
+		var date = new Date()
+		var nian=date.getFullYear()
+		var yue=date.getMonth()+1
+		var ri=date.getDate()
+		var shi=date.getHours()
+		var fen=date.getMinutes()
+		var miao=date.getSeconds()
+		var xiqi=date.getDay()
+		for(var a=0;a<10;a++){
+			if(miao==a){
+				miao = "0" + miao
+			}
+		}
+		if(xiqi==0){
+			xiqi="天"
+		}
+		if(xiqi==1){
+			xiqi="一"
+		}
+		if(xiqi==2){
+			xiqi="二"
+		}
+		if(xiqi==3){
+			xiqi="三"
+		}
+		if(xiqi==4){
+			xiqi="四"
+		}
+		if(xiqi==5){
+			xiqi="五"
+		}
+		if(xiqi==6){
+			xiqi="六"
+		}
+		time.innerHTML = "请看:"+" " + nian + "年" + yue + "月" + ri + "日"+ " " + shi + ":" + fen + ":" + miao +" "+ "星期" + xiqi;
+	}
+	setInterval(function(){
+		gengxi()
+	},1000)
+		gengxi()
+	</script>
+</body>
+</html>

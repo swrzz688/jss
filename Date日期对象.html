@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date日期对象</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#daojishi{
+			margin: 0 auto;
+			width: 500px;
+			height: 50px;
+			font-size: 20px;
+			background-color: #000;
+			color: red;
+			text-align: center;
+			line-height: 50px; 
+		}
+	</style>
+</head>
+<body>
+	<div id="daojishi"></div>
+	<script>
+	var daojishi=document.getElementById("daojishi")
+	function djs(){
+		var jinshi = new Date();
+		var weishi = new Date();
+		var nian=weishi.setFullYear(2018)
+		var ri=weishi.setDate(16)
+		var yue=weishi.setMonth(1)
+		var shi=weishi.setHours(0)
+		var fen=weishi.setMinutes(0)
+		var miao=weishi.setSeconds(0)
+		var m=(weishi.getTime()-jinshi.getTime())/1000
+		var t=Math.floor(m/86400)
+		var h=Math.floor(m/3600 - t*24)
+		var f=Math.floor(m/60-t*24*60-h*60)
+		var s=Math.floor(m-t*24*3600-h*3600-f*60)
+		for(var a=0;a<10;a++){
+			if(t==a){
+				t="0"+t
+			}
+			if(h==a){
+				h="0"+h
+			}
+			if(f==a){
+				f="0"+f
+			}
+			if(s==a){
+				s="0"+ s
+			}
+		}
+		daojishi.innerHTML="距离2018年春节还有："+ t +"天"+ h +"时"+ f +"分"+ s +"秒";
+	}
+	setInterval(function(){
+		djs()
+	},1000)
+		djs()
+	</script>
+</body>
+</html>
