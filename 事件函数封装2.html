@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+	<script>
+	var nodelist=document.getElementsByTagName("li")
+	function shijian(nodelist,eventType,fn){
+		// if(arguments.length==3){
+		// for(var i=0;i<arguments.length;i++){
+		// 	if(arguments[i]==""){
+		// 		var a=arguments["string"]
+		// 	}
+		// 	if(arguments[i]==""){
+		// 		var b=arguments["object"]
+		// 	}
+		// 	if(arguments[i]==""){
+		// 		var c=arguments["function"]
+		// 	}
+
+
+		if(arguments.length == 2){
+          // fn = arguments[1];
+          // eventType = "onclick"
+        }
+        for(var i = 0; i < nodelist.length;i++){
+          nodelist[i][eventType] = fn
+        }
+    }
+	 var liList = document.getElementById("ul").getElementsByTagName("li");
+      shijian(nodelist,"onclick",function(){
+        console.log(this.innerHTML);
+      },liList)
+    </script>
+</body>
+</html>

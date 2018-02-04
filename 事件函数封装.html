@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	li{
+		width: 20px;
+		height: 20px;
+		background-color: #000;
+		margin-bottom: 10px;
+		list-style: none;
+		float: left;
+		margin-right: 10px;
+	}
+	.xianshi{
+		color: red;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<p class="xianshi">newli是一个nodelist节点，首先获取这个nodelist节点，然后为每个nodelist节点中的每一个node节点绑定事件。封装的这个函数的第一个形参期望获取被绑事件（nodelist第二个期望事件名，第三个事件处理函数。</p>
+	<script>
+
+	var nodelist=document.getElementsByTagName("li")
+	var p=document.getElementsByTagName("p")[0]
+	function objli(nodelist,eventType,shijian){
+		for(var a=0;a<nodelist.length;a++){
+			nodelist[a][eventType]=shijian
+		}
+	}
+	objli(nodelist,"onclick",function(){
+		p.style.display="block"
+	})
+	</script>
+</body>
+</html>

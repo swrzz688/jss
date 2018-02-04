@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="dop">
+	</div>
+	<p class="c"></p>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+	function $(selector){
+       var str = selector.slice(1)
+       if(selector[0] == "#"){
+         return document.getElementById(str)
+       }
+       if(selector[0] == "."){
+         return document.getElementsByClassName(str)
+       }
+       if(selector[0] !== "#" && selector[0] !== "."){
+         return document.getElementsByTagName(selector)
+       }
+    }
+		console.log($("#dop"))
+		console.log($(".c"))
+		console.log($("li"))
+	</script>
+</body>
+</html>
