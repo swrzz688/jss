@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>航班起降时间</title>
+	<style>
+		button{
+			background: rgba( 0,0,0,0.8);
+			color: #fff;
+		}
+		th{
+			margin-right:50px;
+			display:inline-block;
+			font-size: 13PX;
+		}
+		tr{
+			padding-left:30px;
+			display:block;
+		}
+		td{
+			font-size: 13px;
+			font-weight: normal;
+		}
+		thead{
+			border-bottom: 1px solid blue;
+			display: block;
+			padding-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<label for="="hangban">航班号</label>
+	<input type="text" name="" id="hangban">
+	<button id="btn">查询</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>航班号</th>
+				<th>出发港口航站楼</th>
+				<th>到达港口航站楼</th>
+				<th>出发城市名称</th>
+				<th>到达城市名称</th>
+				<th>计划起飞时间</th>
+				<th>计划到达时间</th>
+				<th>实际起飞时间</th>
+				<th>实际到达时间</th>
+				<th>航班状态</th>
+			</tr>
+		</thead>
+		<tbody id="data">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		var input = document.getElementById("hangban");
+		var btn = document.getElementById("btn");
+		var tdList = document.getElementById("data").getElementsByTagName("td");
+		function callbackfn(data){
+			console.log(data)
+			tdList[0].innerHTML = data.result.FlightNo;
+			tdList[1].innerHTML = data.result.DepCity;
+			tdList[2].innerHTML = data.result.ArrCity;
+			tdList[3].innerHTML = data.result.DepTerminal;
+			tdList[4].innerHTML = data.result.ArrTerminal;
+			tdList[5].innerHTML = data.result.DepScheduled;
+			tdList[6].innerHTML = data.result.ArrScheduled;
+			tdList[7].innerHTML = data.result.DepActual;
+			tdList[8].innerHTML = data.result.ArrActual;
+			tdList[9].innerHTML = data.result.FlightState;
+			if(data.result.FlightState == "延误"){
+				tdList[9].style.color = "#ff0000";
+			}
+		}
+		btn.onclick = function(){
+			var script = document.createElement("script");
+			script.setAttribute("src","http://op.juhe.cn/flight/df/fs?key=bd4d1244ebd7e2150bd004773394af7d&callback=callbackfn&flightNo=" + input.value)
+			document.getElementsByTagName("head")[0].appendChild(script)
+		}
+	</script>
+</body>
+</html>

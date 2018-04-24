@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//数组去重
+		function arr(dan){
+			var newarr = [];
+			for(var i = 0; i < dan.length;i++){
+				var result = dan[i] 
+				if (newarr.indexOf(dan[i]) == -1){ 
+					newarr.push(dan[i]); 
+				} 
+			} 
+			return newarr; 
+		}
+		var a = [1,5,4,8,4,1,1]
+		console.log(arr(a))
+
+		//url=("url",192.168.1.105?name=haha&sex=18)
+		//字符串处理
+		function str(url){
+			var obj = {};//声明一个对象
+			var x = url.indexOf("?");//获得？的下标
+			var youarr = url.slice(x+1);//从？的下一个截取到最后 获得？后的字符串
+			var arr = youarr.split("&"); //以&分隔右边的字符串
+			console.log(arr)
+			for(var i = 0;i<arr.length;i++){
+				var left = arr[i].indexOf("=")//获得=的下标
+				console.log(left)
+			 	//url对象的属性名（arr的下标0截取至=）= arr从=的下一个截取到最后
+				obj[arr[i].slice(0,left)] =arr[i].slice(left+1)
+			}
+			return obj;
+		}
+		var url = "192.168.1.105?name=haha&sex=male&age=18";
+		console.log(str(url))
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则案列</title>
+	<style>
+		form{
+			width: 20%;
+			border: 2px solid #000;
+			text-align: center;
+			margin:100px auto;
+			border-radius: 5px;
+		}
+		.button{
+			margin: 15px 0;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<p>请输入用户名：</p>
+		<input type="text">
+		<p>请输入密码：</p>
+		<input type="text">
+		<p>请输入手机号：</p>
+		<input type="text">
+		<p>请输入邮箱地址：</p>
+		<input type="text">
+		<br>
+		<input type="button" value="提交" class="button">
+	</form>
+
+	<script>
+		var form = document.getElementsByTagName("form")
+		var p = document.getElementsByTagName("p")
+		var input = document.getElementsByTagName("input")
+		var button = document.getElementsByClassName("button")[0]
+
+		input[0].onblur = function(){
+			var reg = /^[0-9a-zA-Z\u4e00-\u9fa5_]{6,12}$/gi;
+			if(reg.test(this.value)){
+				p[0].innerHTML="注册成功";
+				p[0].style.color="green";
+			}
+			else{
+				p[0].innerHTML="用户名格式不正确！"
+				p[0].style.color="#f00"
+			}
+		}
+
+		input[1].onblur = function(){
+			var d = /[0-9]/gi;
+			var z = /[a-z]/gi;
+			var g = /[_]/gi;
+			var f = /[\W]/gi;
+			if(this.value.length>=6 && this.value.length<=18){
+				if(d.test(this.value) || z.test(this.value)){
+					p[1].innerHTML="你的密码等级过低";
+					p[1].style.color="#f00"
+				}
+				if(z.test(this.value) && d.test(this.value)){
+					p[1].innerHTML="你的密码等级中级";
+					p[1].style.color="yellow"
+				}
+				if(g.test(this.value) && d.test(this.value) && z.test(this.value)){
+					p[1].innerHTML="你的密码等级高级";
+					p[1].style.color="green"
+				}
+				if(f.test(this.value)){
+					p[1].innerHTML="你的密码输入有误";
+					p[1].style.color="#f00"
+				}
+				if(!this.value){
+					p[1].innerHTML="你的密码输入有误";
+					p[1].style.color="#f00"
+				}
+			}
+			else{
+				p[1].innerHTML="请输入6-18位正确密码";
+				p[1].style.color="#f00"
+			}
+		}
+
+		input[2].onblur = function(){
+			var reg = /0?(13|14|15|17|18)[0-9]{9}/;
+			if(this.value.length<=11){
+				if(reg.test(this.value)){
+					p[2].innerHTML = "输入正确"
+					p[2].style.color = "green"
+				}
+				else{
+					p[2].innerHTML = "手机号输入有误"
+					p[2].style.color = "#f00"
+				}
+			}
+			else{
+				p[2].innerHTML = "你输入的手机号有误"
+				p[2].style.color = "#f00"
+			}
+		}
+		input[3].onblur = function(){
+			var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+			if(reg.test(this.value)){
+				p[3].innerHTML = "输入正确";
+				p[3].style.color = "green";
+			}
+			else{
+				p[3].innerHTML = "输入有误";
+				p[3].style.color = "#f00";
+			}
+		}
+	</script>
+</body>
+</html>

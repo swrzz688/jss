@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>第二次使用Ajax</title>
+</head>
+<body>
+	<input type="text" name="" id="shuru">
+	<span class="xianshi"></span>
+	<script type="text/javascript">
+		var input = document.getElementById("shuru")
+		var xianshi = document.getElementsByClassName("xianshi")[0]
+		// 声明回调函数 回调函数名字要与calllbacck一致
+		function callbackfn(data){
+			xianshi.innerHTML = data;
+		}
+		input.onkeyup = function(){
+			if(this.value){
+				//生成一个script标签
+				var script = document.createElement("script");
+				//设置src属性 //请求http地址-请求参数至少一个回调参数，参数名约定为callback
+				script.setAttribute("src","http://192.168.1.102/jsonpName.php?callback=callbackfn&name=" + input.value)
+				//插入到页面里
+				document.getElementsByTagName("head")[0].appendChild(script)
+			}
+			else{
+				xianshi.innerHTML = ""
+			}
+		}
+	</script>
+</body>
+</html>

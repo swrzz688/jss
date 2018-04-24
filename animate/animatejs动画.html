@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			position: relative;
+		}
+		.to{
+			width: 100px;
+			height: 100px;
+			background-color: #f00;
+		}
+		.home{
+			width: 120px;
+			height: 120px;
+			background-color: #eee;
+			position: absolute;
+			top: 400px;
+			left: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="to">
+		getout
+	</div>
+	<div class="home"></div>
+	<script src="donhua.js"></script>
+	<script>
+	$(".to").click(function(){
+		$(".to").animate({
+			marginLeft:"500px",
+			marginTop:"300px",
+		},3000)
+		$(".to").animate({
+			marginTop:"500px",
+			marginRight:"1500px",
+		},3000)
+	})
+	</script>
+</body>
+</html>

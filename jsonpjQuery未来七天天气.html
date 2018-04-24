@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>未来七天天气预报</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	<style type="text/css">
+		ul{
+			width: 1300px;
+			text-align: center;
+			margin: 10px auto;
+			margin-left: 255px;
+		}
+		ul li{
+			width: 130px;
+			background-color:#F2F9D4;
+			text-align: center;
+			border:2px solid #ccefff;
+			margin-bottom: 20px;
+		}
+		h2{
+			margin: 20px auto;
+			font-size: 18px;
+			color: #333;
+			text-align: center;
+			font-weight: normal;
+		}
+		li{
+			list-style: none;
+			float: left;
+			text-align: center;
+		}
+		th{
+			text-align: center;
+		}
+		tbody tr{
+			cursor: pointer;
+		}
+		tr:hover{
+			background-color: #9F79EE;
+		}
+		.biaoti{
+			background-color:   #0000FF  ;
+		}
+		ul>img{
+			text-align: center;
+			margin-right: 300px;
+		}
+	</style>
+</head>
+<body>
+	<h2>全国未来七天的天气预报</h2>
+	<ul class="tq_matter">
+	</ul>
+	<table class="table">
+		<thead>
+			<tr class="biaoti">
+				<th>编号</th>
+				<th>省份</th>
+				<th>城市</th>
+				<th>县区</th>
+			</tr>
+		</thead>
+		<tbody class="qb_matter">
+			<tr class="matter" style="text-align: center;">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- 模板 -->
+	<li class="air_temperature" style="display:none;">
+		<p class="date">
+			<span class="dates"></span>
+			<span class="datex"></span>
+		</p>
+		<p class="icon">
+			<img class="fa" src="" alt="">
+			<img class="fb" src="" alt="">
+		</p>
+		<p class="weather"></p>
+		<p class="temperature">
+			<span class="high"></span>
+			<span class="low"></span>
+		</p>
+		<p class="wind"></p>
+	</li>
+	<script type="text/javascript">
+		var miyao = "b9a224ca00d4a5ea0b1edd1950f80ba5";
+		var airtemperature = $(".air_temperature");
+		var ul = $(".tq_matter");
+		$(".matter").click(function(){
+			ul.html("")
+			var id = $(this).attr("data-id");
+			$.ajax({
+				url:"http://v.juhe.cn/weather/index",
+
+				data:{
+					key:miyao,
+					cityname:id	
+				},
+				dataType:"jsonp",
+				beforeSend:function(){
+					jiazaiGif = document.createElement("img")
+					jiazaiGif.setAttribute("src", "jiazai.gif");
+					$(jiazaiGif).appendTo(ul);
+				},
+				success:function(data){
+					jiazaiGif.remove();
+					var today = data.result.today;
+					var sk = data.result.sk;
+					var future = data.result.future;
+					for(var i in future){
+						var newairtemperature = airtemperature.clone(true);
+						var dates = future[i].date.slice(4,6);
+						var datex = future[i].date.slice(6,8);
+						var zuidiwendu = future[i].temperature.slice(3,9);
+						var zuigaowendu = future[i].temperature.slice(0,2);
+						var weather = future[i].weather;
+						var id_tu = future[i].weather_id
+						var week = future[i].week;
+						var wind = future[i].wind;
+						newairtemperature.find(".dates").html(dates+"月")
+						newairtemperature.find(".datex").html(datex+"日")
+						newairtemperature.find(".weather").html(weather)
+						newairtemperature.find(".low").html(zuidiwendu)
+						newairtemperature.find(".high").html(zuigaowendu)
+						newairtemperature.find(".wind").html(wind)
+						newairtemperature.removeClass("qb_temperature")
+						newairtemperature.appendTo(ul)
+						newairtemperature.find(".fa")[0].setAttribute("src",id_tu.fa + ".png")
+						newairtemperature.find(".fb")[0].setAttribute("src",id_tu.fb + ".png")
+					}
+					ul.find("li").fadeIn("show")
+				}
+			})
+		})	
+		
+
+		//加载城市列表
+		//
+		$.ajax({
+			url:"http://v.juhe.cn/weather/citys",
+			data: {
+				key:miyao
+			},
+			success:function(h){
+				var data = h.result;
+				var tbody = $(".qb_matter");
+				var tr = $(".matter")
+
+				for(var i in data){
+					var newTr = tr.clone(true);
+					var province = data[i].province;
+					var city = data[i].city;
+					var district = data[i].district;
+					var id = data[i].id;
+
+					newTr.find("td").eq(0).html(id)
+					newTr.find("td").eq(1).html(province)
+					newTr.find("td").eq(2).html(city)
+					newTr.find("td").eq(3).html(district)
+					newTr.appendTo(tbody);
+
+					newTr.show(); 
+					newTr.attr("data-id",id)
+				}
+			},
+			dataType:"jsonp"
+		})
+	</script>
+</body>
+</html>

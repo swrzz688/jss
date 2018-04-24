@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	    // 声明回调函数 回调函数名字要与calllbacck一致
+		function callbackfn(data){
+			var date = ("#" + data.toString(16))
+			// console.log(date)
+			if(getCookie("cookie") == undefined){
+				var cookie = []
+			}else{
+				var cookie = getCookie("cookie").split(",")
+			}
+			cookie.push(date)
+			// console.log(cookie)
+
+			// var datp = new Date()
+			// datp.setDate(datp.getDate()+7)
+			// document.cookie = "cookie=" + String(cookie)+";expires=" + datp;
+
+			setCookie({color:cookie},7)
+
+			function getCookie(qishi){ 
+				var str = document.cookie;
+				// var qishi ="name"
+				var staterindex = str.indexOf(qishi)
+				var endindex = str.indexOf(";",staterindex)
+				if(endindex == -1){
+					endindex = str.length;
+				}00
+				var result = str.slice(staterindex,endindex).split("=")[1]
+				return result
+			}
+
+			function setCookie(data,time){
+				var d = new Date();
+				d.setDate(d.getDate() + time)
+				for(var i in data){
+					document.cookie = i + "=" + data[i] + ";expires=" + d;
+				}
+			}
+
+			var object = {}
+			for(var i = 0;i < cookie.length;i++){
+				object[i] = cookie[i]
+			}
+			console.log(object)
+
+
+		}
+		//生成一个script标签
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		//设置src属性 //请求http地址-请求参数至少一个回调参数，参数名约定为callback
+		script.src="http://192.168.1.100:82?callback=callbackfn&name=sunwenrui";
+		//插入到页面里
+		document.getElementsByTagName("head")[0].appendChild(script)
+	</script>
+</body>
+</html>

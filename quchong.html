@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+		//原型  es6
+		var arry = ["袁鹏","马涛","郭博","黄岩","马涛","黄祥","袁鹏","秦明杰"];
+		var a = [1,2,3,4]
+		Array.prototype.quchong = function(n){
+			var newarr = [];
+			for(var i = 0; i < n.length;i++){
+				var result = n[i] 
+				if (newarr.indexOf(result) == -1){ 
+					newarr.push(result); 
+				} 
+			} 
+			return newarr; 
+		}
+		console.log(a.quchong(arry))
+		console.log(Array.prototype.constructor===arry.constructor)
+		console.log(arry.__proto__ ===Array.prototype)
+
+		//es6 let const
+		const s = 10;
+		console.log(s)
+		for(let n = 0;n<=100;n++){
+			console.log(n)
+		}
+
+		// name="马老二";
+		// password="3838438";
+		var url =`http://sunwenrui.top?name=${name},password=${3838438}`;
+		console.log(url)
+		//es6 箭头函数
+		$(() =>{
+			var n = 0;
+			setInterval(()=>{
+				// n++;
+				console.log(n)
+				$("body").animate({fontSize:50},()=>{
+				})
+			},500)
+		})
+	</script>
+	生活带给我们无数困苦，但那终将远去。<br>
+	人生没有退路，只有永不停歇的向前，方能到达彼岸。
+</body> 
+</html>
